@@ -2,3 +2,5 @@ backup/*
 bundle/*
 doc/*
 swap/*
+.viminfo
+.netrwhist
