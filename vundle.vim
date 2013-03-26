@@ -17,7 +17,6 @@
     Bundle 'mhinz/vim-signify'
     Bundle 'mattn/webapi-vim'
     Bundle 'mattn/gist-vim'
-    Bundle 'kana/vim-smartinput'
     Bundle 'mileszs/ack.vim'
     Bundle 'Lokaltog/vim-powerline'
     Bundle 'kien/ctrlp.vim'
@@ -27,6 +26,11 @@
 
 " -v-1 Plugin settings
 " ------------------------------------------------------------------------
+  " -v-2 Netrw-related settings
+  " ----------------------------------------------------------------------
+      let g:netrw_liststyle=3 " Use tree-mode as default view
+      let g:netrw_browse_split=4 " Open file in previous buffer
+      let g:netrw_preview=1 " preview window shown in a vertically split
 
   " -v-2 Syntastic
   " ----------------------------------------------------------------------
