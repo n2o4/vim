@@ -10,6 +10,7 @@
 " ------------------------------------------------------------------------
     Bundle 'tpope/vim-fugitive'
     Bundle 'tpope/vim-unimpaired'
+    Bundle 'tpope/vim-surround'
     Bundle 'gregsexton/gitv'
     Bundle 'jamessan/vim-gnupg'
     Bundle 'zeekay/vim-lawrencium'
