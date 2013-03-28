@@ -104,6 +104,7 @@
 " -v-1 Various
 " ------------------------------------------------------------------------
     set gdefault                                " Use the 'g'lobal flag for :substitute
+    set viminfo+=n~/.vim/.viminfo
 
 " -v-1 Mappings, auto-commands & abbreviations
 " ------------------------------------------------------------------------
@@ -119,9 +120,12 @@
 
       " Make window control quicker
       nnoremap <leader>w <C-w>
-      
+
       " Quickly toggle 'set list'
       nmap <leader>l :set list!<cr>
+
+      " Stop cycling when you can fly
+      nnoremap <leader>ls :ls<CR>:b<space>
 
       " I know when to ask for help, thank you very much.
       noremap <F1> <esc>
