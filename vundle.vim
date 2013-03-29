@@ -9,6 +9,7 @@
 " -v-1 My bundles
 " ------------------------------------------------------------------------
     Bundle 'tpope/vim-fugitive'
+    Bundle 'kablamo/vim-git-log'
     Bundle 'tpope/vim-unimpaired'
     Bundle 'tpope/vim-surround'
     Bundle 'gregsexton/gitv'
