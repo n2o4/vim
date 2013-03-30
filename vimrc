@@ -18,7 +18,7 @@
     set scrolloff=20                            " Number of screen lines to show around the cursor
     set nowrap                                  " Long lines don't wrap
     set fillchars=vert:\|,fold:-
-    set listchars=tab:▸\ ,eol:¬                 " List of strings used for list mode
+    set listchars=tab:▸\ ,eol:¬,trail:·         " List of strings used for list mode
     set relativenumber                          " Show relaitve line number for each line
     set numberwidth=5                           " Number of colums to use for the line number
 
@@ -117,6 +117,9 @@
     " -v-3 Personal mappings
     " --------------------------------------------------------------------
       imap jj <Esc>
+
+      " ack it!
+      nnoremap <leader>a :Ack<space>
 
       " Make window control quicker
       nnoremap <leader>w <C-w>
