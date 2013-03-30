@@ -176,7 +176,7 @@
       nnoremap <leader>gl :Glog<cr>
       nnoremap <leader>gb :Gblame<cr>
       nnoremap <leader>gm :Gmove<cr>
-      nnoremap <leader>gp :Ggrep<cr>
+      nnoremap <leader>gp :Ggrep<space>
       nnoremap <leader>gR :Gread<cr>
       nnoremap <leader>gd :Gdiff<cr>
       nnoremap <leader>gc :Gcommit<cr>
