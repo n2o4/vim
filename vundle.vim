@@ -42,10 +42,13 @@
 
   " -v-2 Vim-signify
   " ----------------------------------------------------------------------
+      let g:signify_vcs_list = [ 'git', 'hg' ]
+      let g:signify_enable_vcs = 1
+
       let g:signify_sign_overwrite = 1
 
-      let g:signify_mapping_next_hunk = '<leader>gn'
-      let g:signify_mapping_prev_hunk = '<leader>gp'
+      let g:signify_mapping_next_hunk = '<leader>gj'
+      let g:signify_mapping_prev_hunk = '<leader>gk'
 
       let g:signify_mapping_toggle_higlight = '<leader>gh'
       let g:signify_mapping_toggle = '<leader>gt'
