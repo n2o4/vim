@@ -18,9 +18,9 @@
     set scrolloff=20                            " Number of screen lines to show around the cursor
     set nowrap                                  " Long lines don't wrap
     set fillchars=vert:\|,fold:-
-    set listchars=tab:▸\ ,eol:¬,trail:·         " List of strings used for list mode
-    set relativenumber                          " Show relaitve line number for each line
-    set numberwidth=5                           " Number of colums to use for the line number
+    set listchars=tab:▸\ ,eol:¬,trail:·,extends:→,precedes:←  " List of strings used for list mode
+    set relativenumber                          " Show relative line number for each line
+    set numberwidth=5                           " Number of columns to use for the line number
 
 " -v-1 Syntax, highlighting and spelling
 " ------------------------------------------------------------------------
@@ -71,7 +71,9 @@
 " ------------------------------------------------------------------------
     set backspace=indent,eol,start              " Specify what backspace and C-w can do in insert mode.
     set formatoptions=rq                        " List of flags how automatic formatting works :help fo-table
-    set completeopt=                            " Whether to use a popup menu for insert mode completion
+    set completeopt+=menu,longest               " Whether to use a popup menu for insert mode completion
+    set omnifunc=syntaxcomplete#Complete        " Function for filetype-specific insert mode completion
+    set dictionary+=/usr/share/dict/words       " List of dictionary files for keyword completion
     set infercase                               " Adjust case of a keyword completion match 
     set showmatch                               " When inserting a bracket, briefly highlight the match
 
@@ -125,7 +127,7 @@
       nnoremap <leader>w <C-w>
 
       " Quickly toggle 'set list'
-      nmap <leader>l :set list!<cr>
+      nmap <leader>l :setlocal list!<cr>
 
       " Stop cycling when you can fly
       nnoremap <leader>ls :ls<CR>:b<space>
@@ -137,7 +139,10 @@
       au FileType help nmap <buffer> <CR> <C-]> 
 
       cmap w!! w !sudo tee >/dev/null %
-      nnoremap <leader>ev <C-w><C-v><C-l>:e $MYVIMRC<cr>
+      nnoremap <leader>ve <C-w><C-v><C-l>:e $MYVIMRC<cr>
+      nnoremap <leader>vs :source $MYVIMRC<cr>
+
+      nnoremap Y y$
 
       map ö [
       map ä ]
@@ -155,7 +160,7 @@
 
       nnoremap / /\v
       vnoremap / /\v
-      nnoremap <silent> <Esc> :noh<CR><Esc>
+      nnoremap <silent> <CR> :nohlsearch<CR>
 
     " -v-3 Tab mappings
     " --------------------------------------------------------------------
@@ -194,6 +199,52 @@
       nnoremap <leader>cf :cfirst<cr>
       nnoremap <leader>cl :clast<cr>
       nnoremap <leader>CC :cclose<cr>
+
+    " -v-3 Ack-motions (http://www.vimbits.com/bits/153)
+    "
+    " Works with pretty much everything, including: w, W, e, E, b, B, t*,
+    " f*, i*, a*, and custom text objects.  For example: _aiw will Ack
+    " for the word under the cursor.  _aib will Ack for the contents of
+    " the parentheses the cursor is inside.
+    " --------------------------------------------------------------------
+      nnoremap <silent> _a :set opfunc=<SID>AckMotion<CR>g@
+      xnoremap <silent> _a :<C-U>call <SID>AckMotion(visualmode())<CR>
+
+      function! s:CopyMotionForType(type)
+        if a:type ==# 'v'
+          silent execute "normal! `<" . a:type . "`>y"
+        elseif a:type ==# 'char'
+          silent execute "normal! `[v`]y"
+        endif
+      endfunction
+
+      function! s:AckMotion(type) abort
+        let reg_save = @@
+
+        call s:CopyMotionForType(a:type)
+
+        execute "normal! :Ack! --literal " . shellescape(@@) . "\<cr>"
+
+        let @@ = reg_save
+      endfunction
+
+    " -v-3 http://vimcasts.org/episodes/the-edit-command/
+    " --------------------------------------------------------------------
+      cnoremap %% <C-R>=expand('%:h').'/'<cr>
+      map <leader>ew :e %%
+      map <leader>es :sp %%
+      map <leader>ev :vsp %%
+      map <leader>et :tabe %%
+
+    " -v-3 Omni-completion with ctrl-space (Thanks c00kiemon5ter)
+    " https://github.com/c00kiemon5ter/vim/blob/master/vimrc
+    " --------------------------------------------------------------------
+      inoremap <expr> <C-Space> pumvisible() \|\| &omnifunc == '' ?
+                      \ "\<lt>C-n>" :
+                      \ "\<lt>C-x>\<lt>C-o><c-r>=pumvisible() ?" .
+                      \ "\"\\<lt>c-n>\\<lt>c-p>\\<lt>c-n>\" :" .
+                      \ "\" \\<lt>bs>\\<lt>C-n>\"\<CR>"
+      imap <C-@> <C-Space>
 
   " -v-2 Auto-commands
   " ----------------------------------------------------------------------
