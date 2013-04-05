@@ -123,6 +123,9 @@
       " ack it!
       nnoremap <leader>a :Ack<space>
 
+      " Open help <foo> in vertical split
+      nnoremap <leader>h :vert h<space>
+
       " Make window control quicker
       nnoremap <leader>w <C-w>
 
@@ -199,6 +202,7 @@
       nnoremap <leader>cf :cfirst<cr>
       nnoremap <leader>cl :clast<cr>
       nnoremap <leader>CC :cclose<cr>
+      nnoremap <leader>ce :cex[]<cr>
 
     " -v-3 Ack-motions (http://www.vimbits.com/bits/153)
     "
@@ -276,6 +280,17 @@
     " -v-3 Auto-clean fugitive buffers
     " --------------------------------------------------------------------
       autocmd BufReadPost fugitive://* set bufhidden=delete
+
+    " -v-3 Set up compiler and makeprg for Ruby
+    " --------------------------------------------------------------------
+      autocmd FileType ruby
+                \ if expand('%') =~# '_test\.rb$' |
+                \   compiler rubyunit | setl makeprg=testrb\ \"%:p\" |
+                \ elseif expand('%') =~# '_spec\.rb$' |
+                \   compiler rspec | setl makeprg=rspec\ \"%:p\" |
+                \ else |
+                \   compiler ruby | setl makeprg=ruby\ -wc\ \"%:p\" |
+                \ endif
 
     " -v-3 Remove weird startup kludges
     " http://superuser.com/questions/553601/vim-has-unexpected-key-presses-on-startup-what-could-be-causing-this

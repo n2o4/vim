@@ -12,6 +12,7 @@
     Bundle 'kablamo/vim-git-log'
     Bundle 'tpope/vim-unimpaired'
     Bundle 'tpope/vim-surround'
+    Bundle 'tpope/vim-dispatch'
     Bundle 'gregsexton/gitv'
     Bundle 'jamessan/vim-gnupg'
     Bundle 'zeekay/vim-lawrencium'
