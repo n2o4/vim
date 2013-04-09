@@ -39,10 +39,10 @@
 " ------------------------------------------------------------------------
     set laststatus=2                            " When to use a Status line for the last window
 
-      set winwidth=84                           " Basically, all non-focused windows shrink down to ..
-      set winheight=10                          " .. five lines and the focused window takes up ..
-      set winminheight=10                       " .. everything that's left (so the focused window ..
-      set winheight=999                         " .. has at least 84 columns, the others shrink to accomodate).
+     " set winwidth=84                           " Basically, all non-focused windows shrink down to ..
+     " set winheight=10                          " .. five lines and the focused window takes up ..
+     " set winminheight=10                       " .. everything that's left (so the focused window ..
+     " set winheight=999                         " .. has at least 84 columns, the others shrink to accomodate).
 
     set hidden                                  " Don't unload a buffer when no longer shown in a window.
     set splitbelow                              " Open new windows under the current one ..
@@ -126,11 +126,8 @@
       " Open help <foo> in vertical split
       nnoremap <leader>h :vert h<space>
 
-      " Make window control quicker
-      nnoremap <leader>w <C-w>
-
       " Quickly toggle 'set list'
-      nmap <leader>l :setlocal list!<cr>
+      nmap <leader>s :setlocal list!<cr>
 
       " Stop cycling when you can fly
       nnoremap <leader>ls :ls<CR>:b<space>
@@ -151,6 +148,32 @@
       map ä ]
       map Ö {
       map Ä }
+
+    " -v-3 Window management mappings
+    " --------------------------------------------------------------------
+      " Make window control quicker
+      nnoremap <leader>w <C-w>
+
+      " The following remaps were blatantly stolen from Barry Arthur, thanks!
+      " https://gist.github.com/dahu/5306096
+      "
+      " Resize windows to half/double their current size (multipliable by a count)
+      nnoremap \k :<c-u>exe "resize " . (winheight(0) / (2 * v:count1))<cr>
+      nnoremap \j :<c-u>exe "resize " . (winheight(0) * (2 * v:count1))<cr>
+      nnoremap \h :<c-u>exe "vertical resize " . (winwidth(0) / (2 * v:count1))<cr>
+      nnoremap \l :<c-u>exe "vertical resize " . (winwidth(0) * (2 * v:count1))<cr> 
+
+      " Max/Min window resize
+      nnoremap \K :<c-u>resize 1<cr>
+      nnoremap \J :<c-u>resize 9999<cr>
+      nnoremap \H :<c-u>vertical resize 1<cr>
+      nnoremap \L :<c-u>vertical resize 9999<cr>
+
+      " Rotate windows
+      nnoremap \<up>    <c-w>K
+      nnoremap \<down>  <c-w>J
+      nnoremap \<left>  <c-w>H
+      nnoremap \<right> <c-w>L
 
     " -v-3 Navigation remaps
     " --------------------------------------------------------------------
