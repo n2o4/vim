@@ -22,6 +22,10 @@
     set relativenumber                          " Show relative line number for each line
     set numberwidth=5                           " Number of columns to use for the line number
 
+" -v-1 Tags
+" ------------------------------------------------------------------------
+    set tags=./tags,tags;/
+
 " -v-1 Syntax, highlighting and spelling
 " ------------------------------------------------------------------------
     "set background=dark                        " Set background color
