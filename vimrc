@@ -190,15 +190,26 @@
 
     " -v-3 Tab mappings
     " --------------------------------------------------------------------
-      map <leader>tt :tabnew<cr>
-      map <leader>te :tabedit
-      map <leader>tc :tabclose<cr>
-      map <leader>to :tabonly<cr>
-      map <leader>tn :tabnext<cr>
-      map <leader>tp :tabprevious<cr>
-      map <leader>tf :tabfirst<cr>
-      map <leader>tl :tablast<cr>
-      map <leader>tm :tabmove
+      nnoremap \tt :tabnew<cr>
+      nnoremap \te :tabedit
+      nnoremap \tc :tabclose<cr>
+      nnoremap \to :tabonly<cr>
+      nnoremap \tn :tabnext<cr>
+      nnoremap \tp :tabprevious<cr>
+      nnoremap \tf :tabfirst<cr>
+      nnoremap \tl :tablast<cr>
+      nnoremap \tm :tabmove
+
+    " -v-3 Mappings for ctrl-p
+    " ----------------------------------------------------------------------
+      nnoremap <leader>f :CtrlP<cr>
+      nnoremap <leader>F :CtrlPCurWD<cr>
+      nnoremap <leader>b :CtrlPBuffer<cr>
+      nnoremap <leader>m :CtrlPMixed<cr>
+      nnoremap <leader>M :CtrlPMRUFiles<cr>
+      nnoremap <leader>t :CtrlPTag<cr>
+      nnoremap <leader>T :CtrlPBufTag<cr>
+      nnoremap <leader>L :CtrlPLine<cr>
 
     " -v-3 Mappings for the fugitive-plugin
     " --------------------------------------------------------------------
