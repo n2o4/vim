@@ -34,6 +34,17 @@
       let g:netrw_browse_split=4 " Open file in previous buffer
       let g:netrw_preview=1 " preview window shown in a vertically split
 
+  " -v-2 ctrl-p
+  " ----------------------------------------------------------------------
+      let g:ctrlp_match_window_bottom=0
+      let g:ctrlp_extensions=['tag', 'line']
+      let g:ctrlp_mruf_max=30
+      let g:ctrlp_clear_cache_on_exit=0
+      let g:ctrlp_by_filename=1
+      let g:ctrlp_open_new_file='r'
+      let g:ctrlp_open_multiple_files='3hjr'
+      let g:ctrlp_root_markers=['tags']
+
   " -v-2 Syntastic
   " ----------------------------------------------------------------------
       let g:syntastic_check_on_open=1
