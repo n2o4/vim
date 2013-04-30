@@ -1,7 +1,9 @@
 backup/*
 bundle/*
 doc/*
+session/*
 swap/*
 spell/*
+tags/*
 .viminfo
 .netrwhist
