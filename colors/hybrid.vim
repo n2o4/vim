@@ -67,7 +67,7 @@ if has("gui_running")
   let s:foreground = "#c5c8c6"
   let s:selection  = "#373b41"
   let s:line       = "#282a2e"
-  let s:comment    = "#969896"
+  let s:comment    = "#707880"
   let s:red        = "#cc6666"
   let s:orange     = "#de935f"
   let s:yellow     = "#f0c674"
@@ -106,7 +106,7 @@ else
     let s:foreground = "250"
     let s:selection  = "237"
     let s:line       = "235"
-    let s:comment    = "246"
+    let s:comment    = "243"
     let s:red        = "167"
     let s:orange     = "173"
     let s:yellow     = "221"
@@ -245,19 +245,22 @@ exe "hi! Folded"        .s:fg_comment     .s:bg_darkcolumn  .s:fmt_none
 exe "hi! FoldColumn"    .s:fg_none        .s:bg_darkcolumn  .s:fmt_none
 exe "hi! SignColumn"    .s:fg_none        .s:bg_darkcolumn  .s:fmt_none
 "		Incsearch"
-exe "hi! LineNr"        .s:fg_selection   .s:bg_none        .s:fmt_none
+"exe "hi! LineNr"        .s:fg_selection   .s:bg_none        .s:fmt_none
+exe "hi! LineNr"        .s:fg_yellow      .s:bg_none        .s:fmt_bold
 exe "hi! CursorLineNr"  .s:fg_yellow      .s:bg_none        .s:fmt_bold
 exe "hi! MatchParen"    .s:fg_background  .s:bg_changebg    .s:fmt_none
 exe "hi! ModeMsg"       .s:fg_green       .s:bg_none        .s:fmt_none
 exe "hi! MoreMsg"       .s:fg_green       .s:bg_none        .s:fmt_none
-exe "hi! NonText"       .s:fg_selection   .s:bg_none        .s:fmt_none
+"exe "hi! NonText"       .s:fg_selection   .s:bg_none        .s:fmt_none
+exe "hi! NonText"        .s:fg_yellow      .s:bg_none        .s:fmt_none
 exe "hi! Pmenu"         .s:fg_foreground  .s:bg_selection   .s:fmt_none
 exe "hi! PmenuSel"      .s:fg_foreground  .s:bg_selection   .s:fmt_revr
 "		PmenuSbar"
 "		PmenuThumb"
 exe "hi! Question"      .s:fg_green       .s:bg_none        .s:fmt_none
 exe "hi! Search"        .s:fg_background  .s:bg_yellow      .s:fmt_none
-exe "hi! SpecialKey"    .s:fg_selection   .s:bg_none        .s:fmt_none
+"exe "hi! SpecialKey"    .s:fg_selection   .s:bg_none        .s:fmt_none
+exe "hi! SpecialKey"    .s:fg_yellow      .s:bg_none        .s:fmt_none
 exe "hi! SpellBad"      .s:fg_red         .s:bg_none        .s:fmt_undr
 exe "hi! SpellCap"      .s:fg_blue        .s:bg_none        .s:fmt_undr
 exe "hi! SpellLocal"    .s:fg_aqua        .s:bg_none        .s:fmt_undr
