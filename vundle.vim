@@ -27,6 +27,7 @@
     Bundle 'xolox/vim-misc'
     Bundle 'majutsushi/tagbar'
     Bundle 'sotte/presenting.vim'
+    Bundle 'nelstrom/vim-markdown-folding'
     "Bundle 'bling/vim-airline'
 
     filetype plugin indent on                 " Set type of file
@@ -55,8 +56,10 @@
       let g:syntastic_check_on_open=1
       let g:syntastic_enable_balloons=0
       let g:syntastic_enable_signs=1          " Put errors on left side
+      let g:syntastic_enable_highlighting=1   " Use syntax highlighting when possible
       let g:syntastic_quiet_warnings=1        " Only errors, not warnings please
       let g:syntastic_auto_loc_list=2         " Only show errors when I ask
+      let g:syntastic_loc_list_height=5
 
   " -v-2 Vim-signify
   " ----------------------------------------------------------------------
@@ -108,5 +111,9 @@
   " -v-2 startify
   " ----------------------------------------------------------------------
       "let g:startify_bookmarks = [ '~/.vim/vimrc' ]
+
+  " -v-2 vim-markdown-folding
+  " ----------------------------------------------------------------------
+      let g:markdown_fold_style = 'nested'
 
 " vim: set fmr=-v-,-^- fdm=marker cms="%s" et ts=2 sw=2 sts=2 :
