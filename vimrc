@@ -19,7 +19,7 @@
     set scrolloff=20                            " Number of screen lines to show around the cursor
     set nowrap                                  " Long lines don't wrap
     set fillchars=vert:\|,fold:-
-    set cmdheight=1                             " Number of lines used for the command-line
+    set cmdheight=2                             " Number of lines used for the command-line
     set listchars=tab:▸\ ,eol:¬,trail:·,extends:→,precedes:←  " List of strings used for list mode
     set relativenumber                          " Show relative line number for each line
     set numberwidth=5                           " Number of columns to use for the line number
@@ -100,6 +100,7 @@
 " ------------------------------------------------------------------------
     set backup                                  " Keep a backup after overwriting a file
     set backupdir=/home/n2o4/.vim/backup        " List of directories to put backup files in
+    set backupskip=mutt-luu5*                   " Don't back up emails
 
 " -v-1 The swap file
 " ------------------------------------------------------------------------

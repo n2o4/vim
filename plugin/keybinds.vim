@@ -7,6 +7,7 @@ let mapleader = "\<space>"
 " -v-2 Personal mappings
 " ------------------------------------------------------------------------
 "imap jj <Esc>
+inoremap <C-c> <Esc>
 
 " Use double-space to enter command-line
 " http://vimbits.com/bits/444
@@ -37,6 +38,9 @@ cmap w!! w !sudo tee >/dev/null %
 " directory).
 nnoremap <silent><leader>cd :lcd %:p:h<CR>
 
+" Shortcut for Syntastic error panel (Overwrites current location list)
+nnoremap <leader>er :Errors<CR>
+
 nnoremap <leader>ve <C-w><C-v><C-l>:e $MYVIMRC<cr>
 nnoremap <leader>vs :source $MYVIMRC<cr>
 
@@ -52,14 +56,25 @@ map Ä }
 " Make window control quicker
 "nnoremap <leader>w <C-w>
 
+"nnoremap <silent> <C-m> :wincmd _<CR>
+"nnoremap <silent> <C-j> <C-W>j<C-W>_
+"nnoremap <silent> <C-k> <C-W>k<C-W>_
+"nnoremap <silent> <C-h> :wincmd h<CR>
+"nnoremap <silent> <C-l> :wincmd l<CR>
+
 " The following remaps were blatantly stolen from Barry Arthur, thanks!
 " https://gist.github.com/dahu/5306096
 "
 " Resize windows to half/double their current size (multipliable by a count)
-nnoremap \k :<c-u>exe "resize " . (winheight(0) / (2 * v:count1))<cr>
-nnoremap \j :<c-u>exe "resize " . (winheight(0) * (2 * v:count1))<cr>
-nnoremap \h :<c-u>exe "vertical resize " . (winwidth(0) / (2 * v:count1))<cr>
-nnoremap \l :<c-u>exe "vertical resize " . (winwidth(0) * (2 * v:count1))<cr> 
+"nnoremap \k :<c-u>exe "resize " . (winheight(0) / (2 * v:count1))<cr>
+"nnoremap \j :<c-u>exe "resize " . (winheight(0) * (2 * v:count1))<cr>
+"nnoremap \h :<c-u>exe "vertical resize " . (winwidth(0) / (2 * v:count1))<cr>
+"nnoremap \l :<c-u>exe "vertical resize " . (winwidth(0) * (2 * v:count1))<cr> 
+
+nnoremap \j :<c-u>exe "resize " . (winheight(0) / (2 * v:count1))<cr>
+nnoremap \k :<c-u>exe "resize " . (winheight(0) * (2 * v:count1))<cr>
+nnoremap \l :<c-u>exe "vertical resize " . (winwidth(0) / (2 * v:count1))<cr>
+nnoremap \h :<c-u>exe "vertical resize " . (winwidth(0) * (2 * v:count1))<cr> 
 
 " Max/Min window resize
 nnoremap \K :<c-u>resize 1<cr>
@@ -87,7 +102,7 @@ nnoremap <leader>} :ptag /<c-r>=expand('<cword>')<cr><cr>
 
 "nnoremap / /\v
 "vnoremap / /\v
-nnoremap <silent> <Esc> :nohlsearch<CR><Esc>
+nnoremap <silent><CR> :nohlsearch<cr>
 
 " -v-2 Tab mappings
 " ------------------------------------------------------------------------
@@ -105,12 +120,25 @@ nnoremap \tm :tabmove
 " ------------------------------------------------------------------------
 nnoremap <leader>f :CtrlP<cr>
 nnoremap <leader>F :CtrlPCurWD<cr>
+nnoremap <leader>p :CtrlPtjump<cr>
 nnoremap <leader>b :CtrlPBuffer<cr>
 nnoremap <leader>m :CtrlPMixed<cr>
 nnoremap <leader>M :CtrlPMRUFiles<cr>
 nnoremap <leader>T :CtrlPTag<cr>
 nnoremap <leader>t :CtrlPBufTag<cr>
 nnoremap <leader>L :CtrlPLine<cr>
+
+" -v-2 Mappings for signify
+" ------------------------------------------------------------------------
+"nnoremap <leader>gj <plug>(signify-next-jump)
+"nnoremap <leader>gk <plug>(signify-prev-jump)
+"nnoremap <leader>gh <plug>(signify-toggle-highlight)
+"nnoremap <leader>gt <plug>(signify-toggle)
+
+"let g:signify_mapping_next_hunk = '<leader>gj'
+"let g:signify_mapping_prev_hunk = '<leader>gk'
+"let g:signify_mapping_toggle_higlight = '<leader>gh'
+"let g:signify_mapping_toggle = '<leader>gt'
 
 " -v-2 Mappings for unite.vim
 " ------------------------------------------------------------------------
@@ -177,6 +205,10 @@ function! s:AckMotion(type) abort
 
   let @@ = reg_save
 endfunction
+
+" Search through code for non-definition occurences of identifiers.
+" Basically it's a glorified, but effective, grep.
+nnoremap <Leader>aw mS:Ack '\b<C-r><C-w>\b'<CR>
 
 " -v-2 http://vimcasts.org/episodes/the-edit-command/
 " ------------------------------------------------------------------------
